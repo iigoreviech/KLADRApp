@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище KLADRModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ALTNAMES">
+    <Key>
+      <PropertyRef Name="OLDCODE" />
+      <PropertyRef Name="NEWCODE" />
+    </Key>
+    <Property Name="OLDCODE" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="NEWCODE" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="LEVEL" Type="nvarchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="DOMA">
+    <Key>
+      <PropertyRef Name="CODE" />
+    </Key>
+    <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="KORP" Type="nvarchar" MaxLength="15" />
+    <Property Name="SOCR" Type="nvarchar" MaxLength="15" />
+    <Property Name="CODE" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="INDEX" Type="nvarchar" MaxLength="7" />
+    <Property Name="GNINMB" Type="nvarchar" MaxLength="5" />
+    <Property Name="UNO" Type="nvarchar" MaxLength="5" />
+    <Property Name="OCATD" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="KLADR">
+    <Key>
+      <PropertyRef Name="CODE" />
+    </Key>
+    <Property Name="NAME" Type="nvarchar" MaxLength="45" />
+    <Property Name="SOCR" Type="nvarchar" MaxLength="15" />
+    <Property Name="CODE" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="INDEX" Type="nvarchar" MaxLength="10" />
+    <Property Name="GNINMB" Type="nvarchar" MaxLength="5" />
+    <Property Name="UNO" Type="nvarchar" MaxLength="5" />
+    <Property Name="OCATD" Type="nvarchar" MaxLength="15" />
+    <Property Name="STATUS" Type="nvarchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="NAMEMAP">
+    <Key>
+      <PropertyRef Name="CODE" />
+    </Key>
+    <Property Name="CODE" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="300" />
+    <Property Name="SHNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="SCNAME" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="SOCRBASE">
+    <Key>
+      <PropertyRef Name="KOD_T_ST" />
+    </Key>
+    <Property Name="LEVEL" Type="nvarchar" MaxLength="7" />
+    <Property Name="SCNAME" Type="nvarchar" MaxLength="15" />
+    <Property Name="SOCRNAME" Type="nvarchar" MaxLength="30" />
+    <Property Name="KOD_T_ST" Type="nvarchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STREET">
+    <Key>
+      <PropertyRef Name="CODE" />
+    </Key>
+    <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="SOCR" Type="nvarchar" MaxLength="15" />
+    <Property Name="CODE" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="INDEX" Type="nvarchar" MaxLength="7" />
+    <Property Name="GNINMB" Type="nvarchar" MaxLength="5" />
+    <Property Name="UNO" Type="nvarchar" MaxLength="5" />
+    <Property Name="OCATD" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище KLADRModelContainer">
+    <EntitySet Name="ALTNAMES" EntityType="Self.ALTNAMES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DOMA" EntityType="Self.DOMA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KLADR" EntityType="Self.KLADR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NAMEMAP" EntityType="Self.NAMEMAP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SOCRBASE" EntityType="Self.SOCRBASE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STREET" EntityType="Self.STREET" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

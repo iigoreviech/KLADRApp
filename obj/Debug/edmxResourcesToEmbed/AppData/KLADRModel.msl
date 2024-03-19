@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище KLADRModelContainer" CdmEntityContainer="KLADREntities3">
+    <EntitySetMapping Name="ALTNAMES">
+      <EntityTypeMapping TypeName="KLADRModel.ALTNAME">
+        <MappingFragment StoreEntitySet="ALTNAMES">
+          <ScalarProperty Name="OLDCODE" ColumnName="OLDCODE" />
+          <ScalarProperty Name="NEWCODE" ColumnName="NEWCODE" />
+          <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOMAs">
+      <EntityTypeMapping TypeName="KLADRModel.DOMA">
+        <MappingFragment StoreEntitySet="DOMA">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="KORP" ColumnName="KORP" />
+          <ScalarProperty Name="SOCR" ColumnName="SOCR" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="INDEX" ColumnName="INDEX" />
+          <ScalarProperty Name="GNINMB" ColumnName="GNINMB" />
+          <ScalarProperty Name="UNO" ColumnName="UNO" />
+          <ScalarProperty Name="OCATD" ColumnName="OCATD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KLADRs">
+      <EntityTypeMapping TypeName="KLADRModel.KLADR">
+        <MappingFragment StoreEntitySet="KLADR">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SOCR" ColumnName="SOCR" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="INDEX" ColumnName="INDEX" />
+          <ScalarProperty Name="GNINMB" ColumnName="GNINMB" />
+          <ScalarProperty Name="UNO" ColumnName="UNO" />
+          <ScalarProperty Name="OCATD" ColumnName="OCATD" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NAMEMAPs">
+      <EntityTypeMapping TypeName="KLADRModel.NAMEMAP">
+        <MappingFragment StoreEntitySet="NAMEMAP">
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SHNAME" ColumnName="SHNAME" />
+          <ScalarProperty Name="SCNAME" ColumnName="SCNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOCRBASEs">
+      <EntityTypeMapping TypeName="KLADRModel.SOCRBASE">
+        <MappingFragment StoreEntitySet="SOCRBASE">
+          <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
+          <ScalarProperty Name="SCNAME" ColumnName="SCNAME" />
+          <ScalarProperty Name="SOCRNAME" ColumnName="SOCRNAME" />
+          <ScalarProperty Name="KOD_T_ST" ColumnName="KOD_T_ST" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STREETs">
+      <EntityTypeMapping TypeName="KLADRModel.STREET">
+        <MappingFragment StoreEntitySet="STREET">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SOCR" ColumnName="SOCR" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="INDEX" ColumnName="INDEX" />
+          <ScalarProperty Name="GNINMB" ColumnName="GNINMB" />
+          <ScalarProperty Name="UNO" ColumnName="UNO" />
+          <ScalarProperty Name="OCATD" ColumnName="OCATD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="KLADRModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище KLADRModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище KLADRModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище KLADRModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище KLADRModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KLADRModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище KLADRModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KLADRModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище KLADRModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище KLADRModel.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

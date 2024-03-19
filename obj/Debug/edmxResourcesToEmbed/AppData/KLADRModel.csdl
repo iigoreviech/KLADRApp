@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KLADRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ALTNAME">
+    <Key>
+      <PropertyRef Name="OLDCODE" />
+      <PropertyRef Name="NEWCODE" />
+    </Key>
+    <Property Name="OLDCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NEWCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LEVEL" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DOMA">
+    <Key>
+      <PropertyRef Name="CODE" />
+    </Key>
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KORP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="SOCR" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="INDEX" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="GNINMB" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="UNO" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="OCATD" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="KLADR">
+    <Key>
+      <PropertyRef Name="CODE" />
+    </Key>
+    <Property Name="NAME" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+    <Property Name="SOCR" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CODE" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="INDEX" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="GNINMB" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="UNO" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="OCATD" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NAMEMAP">
+    <Key>
+      <PropertyRef Name="CODE" />
+    </Key>
+    <Property Name="CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="SHNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SCNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SOCRBASE">
+    <Key>
+      <PropertyRef Name="KOD_T_ST" />
+    </Key>
+    <Property Name="LEVEL" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="SCNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="SOCRNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="KOD_T_ST" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STREET">
+    <Key>
+      <PropertyRef Name="CODE" />
+    </Key>
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SOCR" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="INDEX" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="GNINMB" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="UNO" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="OCATD" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityContainer Name="KLADREntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ALTNAMES" EntityType="Self.ALTNAME" />
+    <EntitySet Name="DOMAs" EntityType="Self.DOMA" />
+    <EntitySet Name="KLADRs" EntityType="Self.KLADR" />
+    <EntitySet Name="NAMEMAPs" EntityType="Self.NAMEMAP" />
+    <EntitySet Name="SOCRBASEs" EntityType="Self.SOCRBASE" />
+    <EntitySet Name="STREETs" EntityType="Self.STREET" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(KLADRModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(KLADRModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
